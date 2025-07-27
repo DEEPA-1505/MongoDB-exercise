@@ -3,13 +3,16 @@
 Microsoft Windows [Version 10.0.22631.5472]
 (c) Microsoft Corporation. All rights reserved.
 
+
 C:\Users\deepi>mongosh
 Current Mongosh Log ID: 6884f379fafe312e1eeec4a8
 Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.6
 Using MongoDB:          8.0.12
 Using Mongosh:          2.5.6
 
+
 For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
 
 ------
    The server generated these startup warnings when booting
@@ -19,14 +22,19 @@ For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
 //creare operation
 
 test> use library
+
 switched to db library
+
 library> db.library.books
+
 library.library.books
+
 library>  db.books.insertOne({title:"ignited minds",author:"Dr.Apj Abdul Kalam",published_year:2002})
 {
   acknowledged: true,
   insertedId: ObjectId('6884f857fafe312e1eeec4a9')
 }
+
 library> db.books.find()
 [
   {
@@ -35,6 +43,7 @@ library> db.books.find()
     author: 'Dr.Apj Abdul Kalam',
     published_year: 2002
   }
+  
 library> db.books.insertOne({title:"The Tata story",author:"Peter Casey",published_year:2018})
 {
   acknowledged: true,
@@ -42,6 +51,7 @@ library> db.books.insertOne({title:"The Tata story",author:"Peter Casey",publish
 }
 
 //Read operation
+
 
 library> db.books.find()
 [
@@ -58,6 +68,7 @@ library> db.books.find()
     published_year: 2018
   }
 ]
+
 library> db.books.find({author:"Peter Casey"})
 [
   {
@@ -67,6 +78,7 @@ library> db.books.find({author:"Peter Casey"})
     published_year: 2018
   }
 ]
+
 library> db.books.find().sort({published_year:1}).limit(1)
 [
   {
@@ -76,6 +88,7 @@ library> db.books.find().sort({published_year:1}).limit(1)
     published_year: 2002
   }
 ]
+
 
 //update operation
 
@@ -87,6 +100,7 @@ library>  db.books.updateOne({title:"The Tata story"},{$set:{published_year:2025
   modifiedCount: 1,
   upsertedCount: 0
 }
+
 library> db.books.find()
 [
   {
@@ -102,6 +116,7 @@ library> db.books.find()
     published_year: 2025
   }
 ]
+
 library>  db.books.updateMany({},{$set:{genre:"Mystery"}})
 {
   acknowledged: true,
@@ -110,6 +125,7 @@ library>  db.books.updateMany({},{$set:{genre:"Mystery"}})
   modifiedCount: 2,
   upsertedCount: 0
 }
+
 library> db.books.find()
 [
   {
@@ -128,10 +144,12 @@ library> db.books.find()
   }
 ]
 
+
 //Delete operation
 
 library> db.books.deleteOne({published_year:2025})
 { acknowledged: true, deletedCount: 1 }
+
 library> db.books.find()
 [
   {
@@ -142,11 +160,13 @@ library> db.books.find()
     genre: 'Mystery'
   }
 ]
+
 library>  db.books.insertOne({title:"The Tata story",author:"Peter Casey",published_year:2018})
 {
   acknowledged: true,
   insertedId: ObjectId('68850d74fafe312e1eeec4ab')
 }
+
 library> db.books.find()
 [
   {
@@ -163,8 +183,10 @@ library> db.books.find()
     published_year: 2018
   }
 ]
+
 library> db.books.deleteMany({published_year:{$lt:2003}})
 { acknowledged: true, deletedCount: 1 }
+
 library> db.books.find()
 [
   {
@@ -175,6 +197,7 @@ library> db.books.find()
   }
 ]
 
+
 //Advanced query
 
 library>  db.books.insertOne({title:"ignited minds",author:"Dr.Apj Abdul Kalam",published_year:2002})
@@ -182,6 +205,7 @@ library>  db.books.insertOne({title:"ignited minds",author:"Dr.Apj Abdul Kalam",
   acknowledged: true,
   insertedId: ObjectId('68851100fafe312e1eeec4ac')
 }
+
 library> db.books.find()
 [
   {
@@ -197,16 +221,19 @@ library> db.books.find()
     published_year: 2002
   }
 ]
+
 library>  db.books.insertOne({title:"MongoDB",author:"Deepa",published_year:2025})
 {
   acknowledged: true,
   insertedId: ObjectId('68851216fafe312e1eeec4ad')
 }
+
 library>  db.books.insertOne({title:"NOSQL",author:"vijay",published_year:2023})
 {
   acknowledged: true,
   insertedId: ObjectId('68851251fafe312e1eeec4ae')
 }
+
 library> db.books.find()
 [
   {
@@ -234,6 +261,7 @@ library> db.books.find()
     published_year: 2023
   }
 ]
+
 library> db.books.find().sort({published_year:-1}).limit(3)
 [
   {
@@ -255,6 +283,7 @@ library> db.books.find().sort({published_year:-1}).limit(3)
     published_year: 2018
   }
 ]
+
 library> db.books.find({title:/MongoDB|NOSQL/i})
 [
   {
@@ -270,6 +299,7 @@ library> db.books.find({title:/MongoDB|NOSQL/i})
     published_year: 2023
   }
 ]
+
 library> db.books.find()
 [
   {
@@ -298,6 +328,7 @@ library> db.books.find()
   }
 ]
 library>
+
 
 
 
